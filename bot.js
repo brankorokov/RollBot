@@ -21,13 +21,13 @@ app.get("/", (req, res) => {
 
     const args = message.content.slice(prefix.length).trim().split(' ');
     const command = args.shift().toLowerCase();
-    const msg = message.channel.send;
+    
 
     console.log(message.content);
 
     if (message.content === '!ping') {
       // send back "Pong." to the channel the message was sent in
-      msg('Pong.');
+      message.channel.send('Pong.');
     }
 
     else if(command === 'roll') {
@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
         const result = random.int(min = 1, max = 20);
         if(result === 1) critFail(1);
         else if(result === 20) natty(20);
-        else {msg(result)};
+        else {message.channel.send(result)};
       }
       else if(args[0] && !args[1]) {
         const result = random.int(min =1, max = parseInt(args[0]));
