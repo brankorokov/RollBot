@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const random = require('random');
-const { prefix:process.env.prefix,
-        token:process.env.token };
+const prefix = process.env.prefix,
+const token = process.env.token };
 const express = require('express');
 
 const app = express();
