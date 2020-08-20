@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
         const result = random.int(min =1, max = parseInt(args[0]));
         if(result === 1) critFail(1);
         else if(result === 20) natty(20);
-        // msg(result);
+        // message.channel.send(result);
       }
       else if (args[1] === 'plus' || args[1] ==="+"){
         const rand = random.int(min =1, max = parseInt(args[0]));
@@ -52,7 +52,7 @@ app.get("/", (req, res) => {
         else {
           console.log(rand);
           console.log(add);
-          msg(result);
+          message.channel.send(result);
         }
       }
       else if (args[1] === 'minus'|| args[1] ==="-"){
@@ -64,16 +64,16 @@ app.get("/", (req, res) => {
         else{
           console.log(rand);
           console.log(sub);
-          msg(result);
+          message.channel.send(result);
         }
       }
     }
     function critFail(result) {
-      msg("A Critical Failure! You really fucked up\nhttps://www.youtube.com/watch?v=CQeezCdF4mk Your total is: " + result)
+      message.channel.send("A Critical Failure! You really fucked up\nhttps://www.youtube.com/watch?v=CQeezCdF4mk Your total is: " + result)
     }
 
     function natty(result){
-      msg("Natural 20! \nhttps://www.youtube.com/watch?v=dn5Tattkj_E\nYour total is: " + result)
+      message.channel.send("Natural 20! \nhttps://www.youtube.com/watch?v=dn5Tattkj_E\nYour total is: " + result)
     }
   });
 });
