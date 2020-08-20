@@ -31,7 +31,9 @@ app.get("/", (req, res) => {
     else if(command === 'roll') {
       if(!args[0]) {
         const result = random.int(min = 1, max = 20);
-        message.channel.send(result);
+        if(result === 1) critFail(1);
+        else if(result === 20) natty(20);
+        else {message.channel.send(result)};
       }
       else if(args[0] && !args[1]) {
         const result = random.int(min =1, max = parseInt(args[0]));
