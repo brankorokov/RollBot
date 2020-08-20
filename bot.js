@@ -70,7 +70,7 @@ app.get("/", (req, res) => {
       }
     }
     function critFail(result) {
-      msg.send("A Critical Failure! You really fucked up\nhttps://www.youtube.com/watch?v=CQeezCdF4mk Your total is: " + result)
+      msg.send("A Critical Failure!\nhttps://www.youtube.com/watch?v=CQeezCdF4mk Your total is: " + result)
     }
 
     function natty(result){
