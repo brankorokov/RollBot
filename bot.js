@@ -21,13 +21,14 @@ app.get("/", (req, res) => {
 
     const args = message.content.slice(prefix.length).trim().split(' ');
     const command = args.shift().toLowerCase();
-    
+    const msg = message.channel;
+
 
     console.log(message.content);
 
     if (message.content === '!ping') {
       // send back "Pong." to the channel the message was sent in
-      message.channel.send('Pong.');
+      msg.send('Pong.');
     }
 
     else if(command === 'roll') {
@@ -35,13 +36,13 @@ app.get("/", (req, res) => {
         const result = random.int(min = 1, max = 20);
         if(result === 1) critFail(1);
         else if(result === 20) natty(20);
-        else {message.channel.send(result)};
+        else {msg.send(result)};
       }
       else if(args[0] && !args[1]) {
         const result = random.int(min =1, max = parseInt(args[0]));
         if(result === 1) critFail(1);
         else if(result === 20) natty(20);
-        // message.channel.send(result);
+        // msg.send(result);
       }
       else if (args[1] === 'plus' || args[1] ==="+"){
         const rand = random.int(min =1, max = parseInt(args[0]));
@@ -52,7 +53,7 @@ app.get("/", (req, res) => {
         else {
           console.log(rand);
           console.log(add);
-          message.channel.send(result);
+          msg.send(result);
         }
       }
       else if (args[1] === 'minus'|| args[1] ==="-"){
@@ -64,16 +65,16 @@ app.get("/", (req, res) => {
         else{
           console.log(rand);
           console.log(sub);
-          message.channel.send(result);
+          msg.send(result);
         }
       }
     }
     function critFail(result) {
-      message.channel.send("A Critical Failure! You really fucked up\nhttps://www.youtube.com/watch?v=CQeezCdF4mk Your total is: " + result)
+      msg.send("A Critical Failure! You really fucked up\nhttps://www.youtube.com/watch?v=CQeezCdF4mk Your total is: " + result)
     }
 
     function natty(result){
-      message.channel.send("Natural 20! \nhttps://www.youtube.com/watch?v=dn5Tattkj_E\nYour total is: " + result)
+      msg.send("Natural 20! \nhttps://www.youtube.com/watch?v=dn5Tattkj_E\nYour total is: " + result)
     }
   });
 });
