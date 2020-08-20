@@ -43,21 +43,33 @@ app.get("/", (req, res) => {
         const rand = random.int(min =1, max = parseInt(args[0]));
         const add = parseInt(args[2]);
         const result =  rand + add;
-        console.log(rand);
-        console.log(add);
-        message.channel.send(result);
+        if(rand === 1) critFail(result);
+        else if(rand === 20) natty(result);
+        else {
+          console.log(rand);
+          console.log(add);
+          message.channel.send(result);
+        }
       }
       else if (args[1] === 'minus'|| args[1] ==="-"){
         const rand = random.int(min =1, max = parseInt(args[0]));
         const sub = parseInt(args[2]);
         const result =  rand - sub;
-        console.log(rand);
-        console.log(sub);
-        message.channel.send(result);
+        if(rand === 1) critFail(result);
+        else if(rand === 20) natty(result);
+        else{
+          console.log(rand);
+          console.log(sub);
+          message.channel.send(result);
+        }
       }
     }
     function critFail(result) {
-      message.channel.send("A Critical Failure! You really fucked up\nhttps://www.youtube.com/watch?v=CQeezCdF4mk")
+      message.channel.send("A Critical Failure! You really fucked up\nhttps://www.youtube.com/watch?v=CQeezCdF4mk Your total is: " + result)
+    }
+
+    function natty(result){
+      message.channel.send("Natural 20! \nhttps://www.youtube.com/watch?v=dn5Tattkj_E\nYour total is: " + result)
     }
   });
 });
