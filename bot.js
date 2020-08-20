@@ -40,14 +40,13 @@ app.get("/", (req, res) => {
         if(result === 1) critFail(1);
         else if(result === 20) natty(20);
         // message.channel.send(result);
-
       }
       else if (args[1] === 'plus' || args[1] ==="+"){
         const rand = random.int(min =1, max = parseInt(args[0]));
         const add = parseInt(args[2]);
         const result =  rand + add;
-        if(rand === 1) critFail(result);
-        else if(rand === 20) natty(result);
+        if(rand === 1 && args[0] === 20) critFail(result);
+        else if(rand === 20 && args[0] === 20) natty(result);
         else {
           console.log(rand);
           console.log(add);
@@ -58,8 +57,8 @@ app.get("/", (req, res) => {
         const rand = random.int(min =1, max = parseInt(args[0]));
         const sub = parseInt(args[2]);
         const result =  rand - sub;
-        if(rand === 1) critFail(result);
-        else if(rand === 20) natty(result);
+        if(rand === 1 && args[0] === 20) critFail(result);
+        else if(rand === 20 && args[0] === 20) natty(result);
         else{
           console.log(rand);
           console.log(sub);
